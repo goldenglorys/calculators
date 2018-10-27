@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta class="viewport" content="width=device-width , initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
+	<title></title>
+</head>
+<style type="text/css">
+    table{width: 30%}
+	input{width: 100%;height: 50px;border-radius: 5px;}
+	#result{background:#B8CAD4;background: linear-gradient(#B8CAD4,#4F7D8D);height: 85px;font-size: 25px;direction: rtl;}
+	#btn{background-color: #ACBAC5;font-size: 20px;}
+	#btnEqual{background-color: #4B5427;}
+	#btnop{background-color: #CD2525}
+	#btnnu{background-color: #FF8F09}
+	td{padding: 8px}
+</style>
+<body> 
+<div class="container">
+<div class="row">
+<div class=" col-md-12">
+<table class="offset-4 mt-2 card-body bg-dark">
+<!-- <td><input type="button" id="btn" value="MR"></td><td><input type="button" id="btn" value="MS"></td><td><input type="button" id="btn" value="M+"></td><td><input type="button" id="btn" value="M-"></td> -->
+	<tr>
+		<td colspan="5"><input type="text" id="result" value="" readonly class="card-header"></td>
+	</tr>
+	<tr>
+		<td colspan="3"><input type="button" id="btnO" value="ON" onclick="tog()" style="width:50%;margin-left:110px"></td>
+	</tr>
+	<tr>
+		<td><input type="button" id="btn" value="&#8592" onclick="sli()"></td>
+		<td><input type="button" id="btn" value="CE" onclick="clears()"></td>
+		<td><input type="button" id="btn" value="&#177" onclick="get('-')"></td>
+		<td><input type="button" id="btn" value="x&#178" onclick="power2()"></td>
+		<td><input type="button" id="btn" value="&#8730" onclick="sqrt()"></td>
+	</tr>
+	<tr>
+		<td><input type="button" id="btnnu" value="7" onclick="get('7')"></td>
+		<td><input type="button" id="btnnu" value="8" onclick="get('8')"></td>
+		<td><input type="button" id="btnnu" value="9" onclick="get('9')"></td>
+		<td><input type="button" id="btnop" value="/" onclick="sign('/')"></td>
+		<td><input type="button" id="btnop" value="%" onclick="sign('%')"></td>
+	</tr>
+	<tr>
+		<td><input type="button" id="btnnu" value="4" onclick="get('4')"></td>
+		<td><input type="button" id="btnnu" value="5" onclick="get('5')"></td>
+		<td><input type="button" id="btnnu" value="6" onclick="get('6')"></td>
+		<td><input type="button" id="btnop" value="x" onclick="sign('*')"></td>
+		<td><input type="button" id="btn" value="1/x" onclick="onedivx()"></td>
+	</tr>
+	<tr>
+		<td><input type="button" id="btnnu" value="1" onclick="get('1')"></td>
+		<td><input type="button" id="btnnu" value="2" onclick="get('2')"></td>
+		<td><input type="button" id="btnnu" value="3" onclick="get('3')"></td>
+		<td><input type="button" id="btnop" value="-" onclick="sign('-')"></td>
+		<td rowspan="2"><input type="button" id="btnEqual" value="=" style="height:115px" onclick="calc()"></td>
+	</tr>
+	<tr>
+		<td colspan="2"><input type="button" id="btnnu" value="0"  style="width:100%" onclick="get('0')"></td>
+		<td><input type="button" id="btnnu" value="." onclick="get('.')"></td>
+		<td><input type="button" id="btnop" value="+" onclick="sign('+')"></td>
+	</tr>
+</table>
+</div>
+</div>
+</div>
+</body>
+<script type="text/javascript">
+var one,signs,two,done,getone,toggle=false;
+    function tog(){
+       if (toggle==false) {btnO.value='OFF';result.value='0';toggle=true;}
+       else{btnO.value='ON';result.value='';toggle=false;}
+    }
+	function get(a) {
+		if(toggle==true && result.value=='0'){
+			result.value=a;
+			getone=true;
+		}
+		else if (getone) {result.value+=a;}
+		if (done==false) {result.value=a;done=true;}
+		else if (done) {result.value+=a;}
+		// if (result.value=='0' && reenter=='first') {result.value=a;}
+	 //    else if (reenter=='second') {result.value=s+=a;}}
+	}
+	function sign(b) {
+		if(toggle==true){
+		one=parseFloat(result.value);
+		signs=b;
+		result.value='';}
+		// result.value+=signs;	
+	}
+	function calc() {
+		// result.value=eval(result.value);
+		if(toggle==true){
+		reenter='second';
+		two=parseFloat(result.value);
+		if(signs=='+')
+		{result.value=one + two;}
+	    if(signs=='-')
+		{result.value=one - two;}
+	    if(signs=='*')
+		{result.value=one * two;}
+	    if(signs=='/')
+		{result.value=one / two;}
+	    if(signs=='%') 
+	    {result.value=one % two;}}
+	    done=false;
+	}
+	function clears() {
+		if(toggle==true){
+		result.value='0';}
+	}
+	function sli() {
+		if(toggle==true){
+		size=result.value.length;
+		result.value=result.value.substring(0,size-1);
+		if (size==1) {result.value='0';}}
+	}
+	 function sqrt() {
+	 	if(toggle==true){
+        result.value=Math.sqrt(result.value);}
+    }
+    function power2() {
+    	if(toggle==true){
+        result.value=Math.pow(result.value,2);}
+    }
+    function onedivx() {
+    	if (toggle==true) {
+    	result.value=1/result.value;}
+    }
+</script>
+</html>

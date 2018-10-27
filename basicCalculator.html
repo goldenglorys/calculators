@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Calculator-v0.1</title>
+	<style type="text/css">
+		input{margin-left: 20px;}
+		#result{margin-left: 30px;}
+		button{padding:8px;margin-left:21px;}
+	</style>
+</head>
+<body>
+<table border="1px" align="center" style="border-radius:5px;">
+	<tr>
+		<td>Value1 <input type="text" name="" id="v1"></td>
+	</tr>
+    <tr>
+		<td>Value2 <input type="text" name="" id="v2"></td>
+	</tr>	
+	<tr>
+		<td>Result<input type="text" name="" id="result"></td>
+	</tr>
+	<tr>
+		<td>
+		<button onclick="solve('plus')">+</button>
+		<button onclick="solve('divide')">/</button>
+		<button onclick="solve('mult')">*</button>
+		<button onclick="solve('minus')">-</button>
+		</td>
+	</tr>
+</table>
+<script type="text/javascript">
+	function solve(math)
+	{
+		if (math=='plus') {result.value=parseInt(v1.value) + parseInt(v2.value)};
+		if (math=='divide') {result.value=v1.value/v2.value};
+		if (math=='mult') {result.value=v1.value*v2.value};
+		if (math=='minus') {result.value=v1.value-v2.value};
+	}
+</script>
+</body>
+</html>

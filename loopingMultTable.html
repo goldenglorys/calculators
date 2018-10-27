@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<meta class="viewport" content="width=device-width , initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
+</head>
+<body>
+<div class="container-fluid">
+<div class="row">
+<div class="col-md-4 offset-4">
+<table class="table table-responsive table-bordered table-condensed">
+    <tr>
+    	<td><h3 class="text-center">Multiplication Table Generator</h3></td>
+    </tr>
+	<tr>
+		<td>Lines<input type="text"  id="lines" class="input-group"></td>
+	</tr>
+	<tr>
+		<td>Blocks<input type="text" id="blocks" class="input-group"></td>
+	</tr>
+	<tr>
+		<td>Start From<input type="text" id="begin" class="input-group"></td>
+	</tr>
+	<tr>
+		<td><button onclick="gen()" class="btn btn-block">Generate</button></td>
+	</tr>
+</table>
+</div>
+</div>
+</div>
+<script type="text/javascript">
+	var gen=function()
+	{
+		var l=lines.value;
+		var start=begin.value;
+		var b=parseInt(blocks.value) + parseInt(start);
+		document.write('<table border=1><tr>');
+		for(i=start;i<b;i++)
+		{
+			document.write('<td><table>')
+			document.write('<tr><th>'+i+ "Times </tr></th>");
+			for(v=1;v<=l;v++)
+			{
+				result =i*v;
+				document.write('<tr><td>'+i+ " X "+ v +" = "+result+"</tr></td>");
+			}
+			document.write('</td></table>')
+		}
+		document.write('</tr></table>')
+	};
+</script>
+</body>
+</html> 	 

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>	
+	<title>Scientific Calculator-v2.0</title>
+</head>
+<style type="text/css">
+    table{margin:auto;border-radius: 10px;position: relative;top: 20px;background-color:#3d4543;border-color:#3d4543;width: 28%;}
+	td{height: 50px; padding: 4px;}
+	#screen{height:70px;padding: 8px; background-color:#bccd95;width: 94%;font-size: 25px; font-family: inherit;direction: rtl;}
+	#power{width: 100%;height: 50px;border-radius: 10px; background-color:#4D3E2D}
+	#equal{height: 110px;}
+	.button.gray{color: white;background-color: #6f6f6f;width: 100%;height: 50px;border-radius: 10px;}
+	.button.orange{color: black;background-color:#847F28;width: 100%;height: 50px;border-radius: 10px;}
+	.button.red{color: black;background-color: #B93D00;width: 100%;height: 50px;border-radius: 10px;}
+	.button.black{color: white;background-color: #303030;width: 100%;height: 50px;border-radius: 10px;}
+</style>
+<body>
+	<table border="10">
+		<tr>
+			<td colspan="5" bgcolor="#bccd95"><input type="text" id="screen" readonly></td>
+		</tr>
+		<tr>
+			<td><input type="button" value="CE" onclick="clr()" class="button red"></td>
+			<td><input type="button" value="&#8592" onclick="slice()" class="button red"></td>
+			<td><input type="button" value="&#177" onclick="shows('-')" class="button gray"></td>
+			<td><input type="button" value="." onclick="shows('.')" class="button gray"></td>
+			<td><input type="button" value="On" onclick="light()" id="power"></td>
+		</tr>
+		<tr>
+			<td><input  type="button" value="7" onclick="shows(7)" class="button gray"></td>
+			<td><input type="button" value="8" onclick="shows(8)" class="button gray"></td>
+			<td><input type="button" value="9" onclick="shows(9)" class="button gray"></td>
+			<td><input type="button" value="+" onclick="opera('plus')" class="button orange"></td>
+			<td><input type="button" value="-" onclick="opera('minus')" class="button orange"></td>
+		</tr>
+		<tr>
+			<td><input type="button" value="4" onclick="shows(4)" class="button gray"></td>
+			<td><input type="button" value="5" onclick="shows(5)" class="button gray"></td>
+			<td><input type="button" value="6" onclick="shows(6)" class="button gray"></td>
+			<td><input type="button" value="&#247" onclick="opera('div')" class="button orange"></td>
+			<td><input type="button" value="x" onclick="opera('mult')" class="button orange"></td>
+		</tr>
+		<tr>
+			<td><input type="button" value="1" onclick="shows(1)" class="button gray"></td>
+			<td><input type="button" value="2" onclick="shows(2)" class="button gray"></td>
+			<td><input type="button" value="3" onclick="shows(3)" class="button gray"></td>
+		    <td><input type="button" value="&#8730" onclick="squarert()" class="button black"></td>
+			<td><input type="button" value="&#8731x" onclick="cube()" class="button black"></td>
+		</tr>
+		<tr>
+            <td colspan="2"><input type="button" value="0" onclick="shows(0)" class="button gray"></td>
+			<td><input type="button" value="In"onclick="ins()" class="button black"></td>
+			<td><input type="button" value="&#960" onclick="pie()" class="button black"></td>
+			<td><input type="button" value="&#696&#8730x" onclick="opera('cub')" class="button black"></td>
+		</tr>
+		<tr>
+			<td><input type="button" value="Sin" onclick="sine()" class="button black"></td>
+			<td><input type="button" value="Cos" onclick="cose()" class="button black"></td>
+			<td><input type="button" value="Tan" onclick="tane()" class="button black"></td>
+			<td><input type="button" value="Log" onclick="loge()" class="button black"></td>
+			<td rowspan="2"><input type="button" value="=" onclick="equal()" class="button gray" id="equal"></td>
+		</tr>
+		<tr>
+			<td><input type="button" value="x&#94"  onclick="opera('powe')" class="button black"></td>
+			<td><input type="button" value="x&#178" onclick="sqr2()" class="button black"></td>
+			<td><input type="button" value="x&#179" onclick="sqr3()" class="button black"></td>
+			<td><input type="button" value="10&#739" onclick="tenpow()" class="button black"></td>
+		</tr>
+</table>
+<script type="text/javascript">
+        var firstval , operator , secondval;
+        // var led = document.getElementById('screen').value;
+        function light()
+    	{
+	        if(document.getElementById('power').value == "On")
+		    {
+			document.getElementById('power').value = "Off";
+			document.getElementById('screen').value='0';
+		    }
+		    else
+		    {
+			document.getElementById('power').value = "On";
+			document.getElementById('screen').value='';	
+		    }
+		    if(document.getElementById('screen').value.length<=25){
+			    	document.getElementById('screen').style.fontSize='25px';}	
+    	}
+		function shows(u)
+		{
+			if(document.getElementById('power').value == 'Off')
+			{
+				if(document.getElementById('screen').value == '0')
+				{
+				document.getElementById('screen').value =u;	
+			    }
+			    else
+			    {
+				document.getElementById('screen').value +=u;
+			    }
+			    if(document.getElementById('screen').value.length>=25){
+			    	document.getElementById('screen').style.fontSize='17px';}
+			}	
+		}
+		function opera(v)
+	    {
+	    	if(document.getElementById('power').value=='Off'){
+			firstval= parseFloat(document.getElementById("screen").value);
+			operator = v;
+			document.getElementById("screen").value ='';}
+			if(document.getElementById('screen').value.length<=25){
+			document.getElementById('screen').style.fontSize='25px';}	
+	    }
+	    function equal()
+	    {
+	    	if(document.getElementById('power').value=='Off')
+			{
+			secondval = parseFloat(document.getElementById("screen").value);
+			if(operator == 'plus')
+			{
+				document.getElementById("screen").value = firstval+secondval;
+			}
+			else if(operator == 'minus')
+			{
+				document.getElementById("screen").value = firstval-secondval;
+			}
+			else if(operator == 'mult')
+			{
+				document.getElementById("screen").value = firstval*secondval;
+			}
+			else if(operator == 'div')
+			{
+				document.getElementById("screen").value = firstval/secondval;
+			}
+			else if(operator == 'powe')
+			{	
+				document.getElementById("screen").value = Math.pow(firstval,secondval);
+			}
+			else if(operator == 'cub')
+				document.getElementById('screen').value = Math.cbrt(firstval,secondval);
+		    }
+            if(document.getElementById('screen').value.length<=24){
+			    	document.getElementById('screen').style.fontsize='25px';}	
+		}	
+		function clr()
+	    {
+	    	if(document.getElementById('power').value=='Off')
+	    	{
+		    document.getElementById('screen').value ='0';
+		    if(document.getElementById('screen').value.length<=25){
+			document.getElementById('screen').style.fontSize='25px';}
+		    }
+	    }
+	    function slice()
+	    {
+	    	if(document.getElementById('power').value=='Off')
+	    	{
+	        var size=document.getElementById('screen').value.length;
+	        document.getElementById('screen').value=document.getElementById('screen').value.slice(0,size-1);
+	        if(size==1){
+		    document.getElementById('screen').value ='0';}
+			if(document.getElementById('screen').value.length<=25){
+			document.getElementById('screen').style.fontSize='25px';}
+	        }
+	    }
+		function sine()
+		{
+			if(document.getElementById('power').value=='Off'){
+	        document.getElementById('screen').value=Math.sin(document.getElementById('screen').value*Math.PI/180);}
+		}
+        function cose()
+        {
+        	if(document.getElementById('power').value=='Off'){
+            document.getElementById('screen').value=Math.cos(document.getElementById('screen').value*Math.PI/180);}
+        }
+        function tane()
+        {
+        	if(document.getElementById('power').value=='Off'){
+            document.getElementById('screen').value=Math.tan(document.getElementById('screen').value*Math.PI/180);}
+        }
+         function ins()
+        {
+        	if(document.getElementById('power').value=='Off'){
+            document.getElementById('screen').value=Math.log(document.getElementById('screen').value);}
+        }
+         function loge()
+	    {
+	    	if(document.getElementById('power').value=='Off'){
+	    	document.getElementById('screen').value=Math.log10(document.getElementById('screen').value);}
+	    }
+        function squarert()
+        {
+        	if(document.getElementById('power').value=='Off'){
+            document.getElementById('screen').value=Math.sqrt(document.getElementById('screen').value);}
+        }
+	    function pie()
+	    {
+	    	if(document.getElementById('power').value=='Off'){
+	    	document.getElementById('screen').value=Math.PI;}
+	    }
+	    function sqr2()
+	    {
+	    	if(document.getElementById('power').value=='Off'){
+	    	document.getElementById('screen').value = Math.pow(document.getElementById('screen').value,2);}
+	    }
+	     function sqr3()
+	    {
+	    	if(document.getElementById('power').value=='Off'){
+	    	document.getElementById('screen').value = Math.pow(document.getElementById('screen').value,3);}
+	    }
+	    function tenpow()
+	    {
+	    	if(document.getElementById('power').value=='Off'){
+	    	document.getElementById('screen').value = Math.pow(10,document.getElementById('screen').value);}
+	    }
+	     function cube()
+        {
+        	if(document.getElementById('power').value=='Off'){
+        	document.getElementById('screen').value=Math.cbrt(document.getElementById('screen').value);}
+        }
+	</script>
+</body>
+</html>	
