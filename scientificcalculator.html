@@ -68,161 +68,149 @@
 		</tr>
 </table>
 <script type="text/javascript">
-        var firstval , operator , secondval, done;
-        function light()
-    	{
-	        if(document.getElementById('power').value == "On")
-		    {
+    var firstval , operator , secondval, done;
+    function light() {
+        if(document.getElementById('power').value == "On") {
 			document.getElementById('power').value = "Off";
 			document.getElementById('screen').value='0';
-		    }
-		    else
-		    {
+	    }
+	    else {
 			document.getElementById('power').value = "On";
 			document.getElementById('screen').value='';	
-		    }
-		    if(document.getElementById('screen').value.length<=25){
-			    	document.getElementById('screen').style.fontSize='25px';}	
-    	}
-		function shows(u)
-		{
-			if(document.getElementById('power').value == 'Off')
-			{
-				if(document.getElementById('screen').value == '0')
-				{
+	    }
+	    if(document.getElementById('screen').value.length<=25) {
+		    document.getElementById('screen').style.fontSize='25px';
+		}	
+	}
+	function shows {
+		if(document.getElementById('power').value == 'Off') {
+			if(document.getElementById('screen').value == '0') {
 				document.getElementById('screen').value =u;	
-			    }
-			    else if (done==false) {
-			    	document.getElementById('screen').value = u;
-			    	done = true;
-			    }
-			    else
-			    {
+		    }
+		    else if (done==false) {
+		    	document.getElementById('screen').value = u;
+		    	done = true;
+		    }
+		    else {
 				document.getElementById('screen').value +=u;
-			    }
-			    if(document.getElementById('screen').value.length>=25){
-			    	document.getElementById('screen').style.fontSize='17px';}
-			}	
-		}
-		function opera(v)
-	    {
-	    	if(document.getElementById('power').value=='Off'){
+		    }
+		    if(document.getElementById('screen').value.length>=25) {
+		    	document.getElementById('screen').style.fontSize='17px';
+		    }
+		}	
+	}
+	function opera(v) {
+    	if(document.getElementById('power').value=='Off'){
 			firstval= parseFloat(document.getElementById("screen").value);
 			operator = v;
-			document.getElementById("screen").value ='';}
-			if(document.getElementById('screen').value.length<=25){
-			document.getElementById('screen').style.fontSize='25px';}	
-	    }
-	    function equal()
-	    {
-	    	if(document.getElementById('power').value=='Off')
-			{
+			document.getElementById("screen").value ='';
+		}
+		if(document.getElementById('screen').value.length<=25){
+			document.getElementById('screen').style.fontSize='25px';
+		}	
+    }
+    function equal() {
+    	if(document.getElementById('power').value=='Off') {
 			secondval = parseFloat(document.getElementById("screen").value);
-			if(operator == 'plus')
-			{
+			if(operator == 'plus') {
 				document.getElementById("screen").value = firstval+secondval;
 			}
-			else if(operator == 'minus')
-			{
+			else if(operator == 'minus') {
 				document.getElementById("screen").value = firstval-secondval;
 			}
-			else if(operator == 'mult')
-			{
+			else if(operator == 'mult') {
 				document.getElementById("screen").value = firstval*secondval;
 			}
-			else if(operator == 'div')
-			{
+			else if(operator == 'div') {
 				document.getElementById("screen").value = firstval/secondval;
 			}
-			else if(operator == 'powe')
-			{	
+			else if(operator == 'powe') {	
 				document.getElementById("screen").value = Math.pow(firstval,secondval);
 			}
-			else if(operator == 'cub'){
+			else if(operator == 'cub') {
 				document.getElementById('screen').value = Math.cbrt(firstval,secondval);
 		    }
             if(document.getElementById('screen').value.length<=24){
 			    	document.getElementById('screen').style.fontsize='25px';
-			    }
+			}
 			done = false;    
-			}	
 		}	
-		function clr()
-	    {
-	    	if(document.getElementById('power').value=='Off')
-	    	{
-		    document.getElementById('screen').value ='0';
+	}	
+	function clr() {
+    	if(document.getElementById('power').value=='Off') {
+	    	document.getElementById('screen').value ='0';
 		    if(document.getElementById('screen').value.length<=25){
-			document.getElementById('screen').style.fontSize='25px';}
-		    }
+				document.getElementById('screen').style.fontSize='25px';
+			}
 	    }
-	    function slice()
-	    {
-	    	if(document.getElementById('power').value=='Off')
-	    	{
-	        var size=document.getElementById('screen').value.length;
-	        document.getElementById('screen').value=document.getElementById('screen').value.slice(0,size-1);
-	        if(size==1){
-		    document.getElementById('screen').value ='0';}
-			if(document.getElementById('screen').value.length<=25){
-			document.getElementById('screen').style.fontSize='25px';}
+    }
+    function slice() {
+    	if(document.getElementById('power').value=='Off') {
+        	var size=document.getElementById('screen').value.length;
+        	document.getElementById('screen').value=document.getElementById('screen').value.slice(0,size-1);
+        	if(size==1){
+	    	document.getElementById('screen').value ='0';
 	        }
-	    }
-		function sine()
-		{
-			if(document.getElementById('power').value=='Off'){
-	        document.getElementById('screen').value=Math.sin(document.getElementById('screen').value*Math.PI/180);}
-		}
-        function cose()
-        {
-        	if(document.getElementById('power').value=='Off'){
-            document.getElementById('screen').value=Math.cos(document.getElementById('screen').value*Math.PI/180);}
+			if(document.getElementById('screen').value.length<=25){
+			document.getElementById('screen').style.fontSize='25px';
+		    }
         }
-        function tane()
-        {
-        	if(document.getElementById('power').value=='Off'){
-            document.getElementById('screen').value=Math.tan(document.getElementById('screen').value*Math.PI/180);}
+    }
+	function sin() {
+		if(document.getElementById('power').value=='Off'){
+        	document.getElementById('screen').value=Math.sin(document.getElementById('screen').value*Math.PI/180);
+    	}
+	}
+    function cose() {
+    	if(document.getElementById('power').value=='Off'){
+    		document.getElementById('screen').value=Math.cos(document.getElementById('screen').value*Math.PI/180);
+    	}
+    }
+    function tane() {
+    	if(document.getElementById('power').value=='Off'){
+        	document.getElementById('screen').value=Math.tan(document.getElementById('screen').value*Math.PI/180);
         }
-         function ins()
-        {
-        	if(document.getElementById('power').value=='Off'){
-            document.getElementById('screen').value=Math.log(document.getElementById('screen').value);}
+    }
+     function ins() {
+    	if(document.getElementById('power').value=='Off'){
+        	document.getElementById('screen').value=Math.log(document.getElementById('screen').value);
         }
-         function loge()
-	    {
-	    	if(document.getElementById('power').value=='Off'){
-	    	document.getElementById('screen').value=Math.log10(document.getElementById('screen').value);}
-	    }
-        function squarert()
-        {
-        	if(document.getElementById('power').value=='Off'){
-            document.getElementById('screen').value=Math.sqrt(document.getElementById('screen').value);}
+    }
+     function loge() {
+    	if(document.getElementById('power').value=='Off'){
+    		document.getElementById('screen').value=Math.log10(document.getElementById('screen').value);
+    	}
+    }
+    function squarert() {
+    	if(document.getElementById('power').value=='Off'){
+        	document.getElementById('screen').value=Math.sqrt(document.getElementById('screen').value);
         }
-	    function pie()
-	    {
-	    	if(document.getElementById('power').value=='Off'){
-	    	document.getElementById('screen').value=Math.PI;}
-	    }
-	    function sqr2()
-	    {
-	    	if(document.getElementById('power').value=='Off'){
-	    	document.getElementById('screen').value = Math.pow(document.getElementById('screen').value,2);}
-	    }
-	     function sqr3()
-	    {
-	    	if(document.getElementById('power').value=='Off'){
-	    	document.getElementById('screen').value = Math.pow(document.getElementById('screen').value,3);}
-	    }
-	    function tenpow()
-	    {
-	    	if(document.getElementById('power').value=='Off'){
-	    	document.getElementById('screen').value = Math.pow(10,document.getElementById('screen').value);}
-	    }
-	     function cube()
-        {
-        	if(document.getElementById('power').value=='Off'){
-        	document.getElementById('screen').value=Math.cbrt(document.getElementById('screen').value);}
+    }
+    function pie() {
+    	if(document.getElementById('power').value=='Off'){
+    		document.getElementById('screen').value=Math.PI;
+    	}
+    }
+    function sqr2() {
+    	if(document.getElementById('power').value=='Off'){
+    		document.getElementById('screen').value = Math.pow(document.getElementById('screen').value,2);
+    	}
+    }
+     function sqr3() {
+    	if(document.getElementById('power').value=='Off'){
+    		document.getElementById('screen').value = Math.pow(document.getElementById('screen').value,3);
         }
-	</script>
+    }
+    function tenpow() {
+    	if(document.getElementById('power').value=='Off'){
+    		document.getElementById('screen').value = Math.pow(10,document.getElementById('screen').value);
+    	}
+    }
+     function cube() {
+    	if(document.getElementById('power').value=='Off'){
+    		document.getElementById('screen').value=Math.cbrt(document.getElementById('screen').value);
+    	}
+    }
+</script>
 </body>
 </html>	
