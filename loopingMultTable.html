@@ -31,25 +31,22 @@
 </div>
 </div>
 <script type="text/javascript">
-	var gen=function()
-	{
+	var gen=function() {
 		var l=lines.value;
 		var start=begin.value;
 		var b=parseInt(blocks.value) + parseInt(start);
 		document.write('<table border=1><tr>');
-		for(i=start;i<b;i++)
-		{
+		for(i=start;i<b;i++) {
 			document.write('<td><table>')
 			document.write('<tr><th>'+i+ "Times </tr></th>");
-			for(v=1;v<=l;v++)
-			{
-				result =i*v;
+			for(v=1;v<=l;v++) {
+				result = i*v;
 				document.write('<tr><td>'+i+ " X "+ v +" = "+result+"</tr></td>");
 			}
-			document.write('</td></table>')
+			document.write('</td></table>');
 		}
-		document.write('</tr></table>')
-	};
+		document.write('</tr></table>');
+	}
 </script>
 </body>
 </html> 	 
