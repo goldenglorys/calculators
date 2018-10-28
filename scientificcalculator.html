@@ -68,8 +68,7 @@
 		</tr>
 </table>
 <script type="text/javascript">
-        var firstval , operator , secondval;
-        // var led = document.getElementById('screen').value;
+        var firstval , operator , secondval, done;
         function light()
     	{
 	        if(document.getElementById('power').value == "On")
@@ -92,6 +91,10 @@
 				if(document.getElementById('screen').value == '0')
 				{
 				document.getElementById('screen').value =u;	
+			    }
+			    else if (done==false) {
+			    	document.getElementById('screen').value = u;
+			    	done = true;
 			    }
 			    else
 			    {
@@ -135,11 +138,14 @@
 			{	
 				document.getElementById("screen").value = Math.pow(firstval,secondval);
 			}
-			else if(operator == 'cub')
+			else if(operator == 'cub'){
 				document.getElementById('screen').value = Math.cbrt(firstval,secondval);
 		    }
             if(document.getElementById('screen').value.length<=24){
-			    	document.getElementById('screen').style.fontsize='25px';}	
+			    	document.getElementById('screen').style.fontsize='25px';
+			    }
+			done = false;    
+			}	
 		}	
 		function clr()
 	    {
